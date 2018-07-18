@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE weblogic-rdbms-jar PUBLIC "-//BEA Systems, Inc.//DTD WebLogic 7.0.0 EJB RDBMS Persistence//EN" "http://www.bea.com/servers/wls700/dtd/weblogic-rdbms20-persistence-700.dtd">
+
+<weblogic-rdbms-jar>
+   <weblogic-rdbms-bean>
+      <ejb-name>PropertyDate</ejb-name>
+      <data-source-name>defaultDS</data-source-name>
+      <table-map>
+      <table-name>OS_PROPERTYDATE</table-name>
+      <field-map>
+         <cmp-field>date</cmp-field>
+         <dbms-column>value</dbms-column>
+      </field-map>
+      <field-map>
+         <cmp-field>id</cmp-field>
+         <dbms-column>id</dbms-column>
+      </field-map>
+      </table-map>
+
+   </weblogic-rdbms-bean>
+   <weblogic-rdbms-bean>
+      <ejb-name>PropertyEntry</ejb-name>
+      <data-source-name>defaultDS</data-source-name>
+      <table-map>
+      <table-name>OS_PROPERTYENTRY</table-name>
+      <field-map>
+         <cmp-field>entityId</cmp-field>
+         <dbms-column>entityid</dbms-column>
+      </field-map>
+      <field-map>
+         <cmp-field>entityName</cmp-field>
+         <dbms-column>entityname</dbms-column>
+      </field-map>
+      <field-map>
+         <cmp-field>id</cmp-field>
+         <dbms-column>id</dbms-column>
+      </field-map>
+      <field-map>
+         <cmp-field>key</cmp-field>
+         <dbms-column>keyvalue</dbms-column>
+      </field-map>
+      <field-map>
+         <cmp-field>type</cmp-field>
+         <dbms-column>type</dbms-column>
+      </field-map>
+      </table-map>
+
+      <weblogic-query>
+         <query-method>
+            <method-name>findByNameAndId</method-name>
+            <method-params>
+               <method-param>java.lang.String</method-param>
+               <method-param>long</method-param>
+            </method-params>
+         </query-method>
+         <weblogic-ql><![CDATA[SELECT DISTINCT OBJECT(o) FROM PropertyEntry o WHERE o.entityName = ?1 AND o.entityId = ?2]]></weblogic-ql>
+      </weblogic-query>
+      <weblogic-query>
+         <query-method>
+            <method-name>findByEntity</method-name>
+            <method-params>
+               <method-param>java.lang.String</method-param>
+               <method-param>long</method-param>
+               <method-param>java.lang.String</method-param>
+            </method-params>
+         </query-method>
+         <weblogic-ql><![CDATA[SELECT DISTINCT OBJECT(o) FROM PropertyEntry o WHERE o.entityName = ?1 AND o.entityId = ?2 AND o.key = ?3]]></weblogic-ql>
+      </weblogic-query>
+
+   </weblogic-rdbms-bean>
+   <weblogic-rdbms-bean>
+      <ejb-name>PropertyString</ejb-name>
+      <data-source-name>defaultDS</data-source-name>
+      <table-map>
+      <table-name>OS_PROPERTYSTRING</table-name>
+      <field-map>
+         <cmp-field>id</cmp-field>
+         <dbms-column>id</dbms-column>
+      </field-map>
+      <field-map>
+         <cmp-field>string</cmp-field>
+         <dbms-column>value</dbms-column>
+      </field-map>
+      </table-map>
+
+   </weblogic-rdbms-bean>
+   <weblogic-rdbms-bean>
+      <ejb-name>PropertyNumber</ejb-name>
+      <data-source-name>defaultDS</data-source-name>
+      <table-map>
+      <table-name>OS_PROPERTYNUMBER</table-name>
+      <field-map>
+         <cmp-field>id</cmp-field>
+         <dbms-column>id</dbms-column>
+      </field-map>
+      <field-map>
+         <cmp-field>number</cmp-field>
+         <dbms-column>value</dbms-column>
+      </field-map>
+      </table-map>
+
+   </weblogic-rdbms-bean>
+   <weblogic-rdbms-bean>
+      <ejb-name>PropertyDecimal</ejb-name>
+      <data-source-name>defaultDS</data-source-name>
+      <table-map>
+      <table-name>OS_PROPERTYDECIMAL</table-name>
+      <field-map>
+         <cmp-field>decimal</cmp-field>
+         <dbms-column>value</dbms-column>
+      </field-map>
+      <field-map>
+         <cmp-field>id</cmp-field>
+         <dbms-column>id</dbms-column>
+      </field-map>
+      </table-map>
+
+   </weblogic-rdbms-bean>
+   <weblogic-rdbms-bean>
+      <ejb-name>PropertyData</ejb-name>
+      <data-source-name>defaultDS</data-source-name>
+      <table-map>
+      <table-name>OS_PROPERTYDATA</table-name>
+      <field-map>
+         <cmp-field>bytes</cmp-field>
+         <dbms-column>value</dbms-column>
+      </field-map>
+      <field-map>
+         <cmp-field>id</cmp-field>
+         <dbms-column>id</dbms-column>
+      </field-map>
+      </table-map>
+
+   </weblogic-rdbms-bean>
+
+   <create-default-dbms-tables>True</create-default-dbms-tables>
+
+</weblogic-rdbms-jar>

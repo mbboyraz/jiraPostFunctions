@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!-- This should eventually go into Atlassian Plugins -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:include schemaLocation="common.xsd"/>
+    <xs:include schemaLocation="atlassian-plugin-common.xsd"/>
+
+    <xs:complexType name="ServletContextListenerType">
+        <xs:annotation>
+            <xs:documentation>
+                Provides a way for plugins to declare servlet container listeners (javax.servlet.ServletContextListener)
+                so they can be notified when the javax.servlet.ServletContext is created for the plugin.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="AbstractPluginModuleType"/>
+        </xs:complexContent>
+    </xs:complexType>
+</xs:schema>

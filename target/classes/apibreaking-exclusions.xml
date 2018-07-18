@@ -1,0 +1,32 @@
+<exclusions>
+    <!--
+        This file contains classes, methods and fields that are excluded from api/spi compatibility checking
+        You should NOT be putting anything in here without a very very good reason and the knowledge and approval
+        of the Team Lead responsible for JIRA API
+
+        eg:
+           <exclusions>
+             <class name="com/atlassian/query/Query" exclude="true" />
+             <class name="com/atlassian/query/operator/Operator">
+               <field name="LIKE" exclude="true" />
+               <field name="NOT_LIKE" exclude="true" />
+               <method name="values" desc="()[Lcom/atlassian/query/operator/Operator;" exclude="true" />
+               <method name="valueOf" desc="(Ljava/lang/String;)Lcom/atlassian/query/operator/Operator;" access="PUBLIC"/>
+             </class>
+           </exclusions>
+       -->
+
+        <class name="com/atlassian/jira/plugin/webfragment/conditions/RequestCachingConditionHelper" exclude="true" /> <!-- it was @ExperimentalApi -->
+        <class name="com/atlassian/jira/plugin/webfragment/conditions/AbstractFixedPermissionCondition"> <!-- Experimental -->
+            <method name="&lt;init&gt;" desc="(Lcom/atlassian/jira/security/PermissionManager;I)V" exclude="true" />
+        </class>
+        <class name="com/atlassian/jira/plugin/webfragment/conditions/AbstractPermissionCondition"> <!-- Experimental methods removed -->
+            <method name="getHasProjectsKey" desc="(ILcom/atlassian/jira/user/ApplicationUser;[Ljava/lang/Object;)Ljava/lang/String;" exclude="true" />
+            <method name="getHasPermissionKey" desc="(Lcom/atlassian/jira/security/plugin/ProjectPermissionKey;Lcom/atlassian/jira/user/ApplicationUser;[Ljava/lang/Object;)Ljava/lang/String;" exclude="true" />
+            <method name="getHasPermissionKey" desc="(ILcom/atlassian/jira/user/ApplicationUser;[Ljava/lang/Object;)Ljava/lang/String;" exclude="true" />
+        </class>
+        <class name="com/atlassian/jira/bc/project/ProjectAction">
+            <method name="getPermissions" desc="()[I" exclude="true" />
+        </class>
+
+</exclusions>

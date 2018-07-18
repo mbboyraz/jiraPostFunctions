@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ejb-jar PUBLIC "-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN" "http://java.sun.com/dtd/ejb-jar_2_0.dtd">
+
+<ejb-jar >
+
+   <description><![CDATA[OpenSymphony PropertySet]]></description>
+   <display-name>PropertySet Module</display-name>
+
+   <enterprise-beans>
+
+      <!-- Session Beans -->
+      <session >
+         <description><![CDATA[Session bean implementation of PropertyStore.]]></description>
+
+         <ejb-name>PropertyStore</ejb-name>
+
+         <home>com.opensymphony.module.propertyset.ejb.PropertyStoreHome</home>
+         <remote>com.opensymphony.module.propertyset.ejb.PropertyStore</remote>
+         <ejb-class>com.opensymphony.module.propertyset.ejb.PropertyStoreEJB</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+
+         <ejb-local-ref >
+            <ejb-ref-name>ejb/PropertyEntry</ejb-ref-name>
+            <ejb-ref-type>Entity</ejb-ref-type>
+            <local-home>com.opensymphony.module.propertyset.ejb.types.PropertyEntryLocalHome</local-home>
+            <local>com.opensymphony.module.propertyset.ejb.types.PropertyEntryLocal</local>
+            <ejb-link>PropertyEntry</ejb-link>
+         </ejb-local-ref>
+
+      </session>
+
+     <!--
+       To add session beans that you have deployment descriptor info for, add
+       a file to your XDoclet merge directory called session-beans.xml that contains
+       the <session></session> markup for those beans.
+     -->
+
+      <!-- Entity Beans -->
+      <entity >
+         <description><![CDATA[AbstractValueEntityEJB concrete implementation optimized for storing Dates.]]></description>
+
+         <ejb-name>PropertyDate</ejb-name>
+
+         <local-home>com.opensymphony.module.propertyset.ejb.types.PropertyDateLocalHome</local-home>
+         <local>com.opensymphony.module.propertyset.ejb.types.PropertyDateLocal</local>
+
+         <ejb-class>com.opensymphony.module.propertyset.ejb.types.PropertyDateCMP</ejb-class>
+         <persistence-type>Container</persistence-type>
+         <prim-key-class>java.lang.Long</prim-key-class>
+         <reentrant>False</reentrant>
+         <cmp-version>2.x</cmp-version>
+         <abstract-schema-name>PropertyDate</abstract-schema-name>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>date</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>id</field-name>
+         </cmp-field>
+         <primkey-field>id</primkey-field>
+
+	  <!-- Write a file named ejb-finders-DateEntityEJB.xml if you want to define extra finders. -->
+      </entity>
+
+      <entity >
+         <description><![CDATA[]]></description>
+
+         <ejb-name>PropertyEntry</ejb-name>
+
+         <local-home>com.opensymphony.module.propertyset.ejb.types.PropertyEntryLocalHome</local-home>
+         <local>com.opensymphony.module.propertyset.ejb.types.PropertyEntryLocal</local>
+
+         <ejb-class>com.opensymphony.module.propertyset.ejb.types.PropertyEntryCMP</ejb-class>
+         <persistence-type>Container</persistence-type>
+         <prim-key-class>java.lang.Long</prim-key-class>
+         <reentrant>False</reentrant>
+         <cmp-version>2.x</cmp-version>
+         <abstract-schema-name>PropertyEntry</abstract-schema-name>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>entityId</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>entityName</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>id</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>key</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>type</field-name>
+         </cmp-field>
+         <primkey-field>id</primkey-field>
+
+         <ejb-ref >
+            <ejb-ref-name>ejb/SequenceGenerator</ejb-ref-name>
+            <ejb-ref-type>Session</ejb-ref-type>
+            <home>com.opensymphony.module.sequence.SequenceGeneratorHome</home>
+            <remote>com.opensymphony.module.sequence.SequenceGenerator</remote>
+            <ejb-link>SequenceGenerator</ejb-link>
+         </ejb-ref>
+
+         <ejb-local-ref >
+            <ejb-ref-name>ejb/PropertyNumber</ejb-ref-name>
+            <ejb-ref-type>Entity</ejb-ref-type>
+            <local-home>com.opensymphony.module.propertyset.ejb.types.PropertyNumberLocalHome</local-home>
+            <local>com.opensymphony.module.propertyset.ejb.types.PropertyNumberLocal</local>
+            <ejb-link>PropertyNumber</ejb-link>
+         </ejb-local-ref>
+         <ejb-local-ref >
+            <ejb-ref-name>ejb/PropertyDate</ejb-ref-name>
+            <ejb-ref-type>Entity</ejb-ref-type>
+            <local-home>com.opensymphony.module.propertyset.ejb.types.PropertyDateLocalHome</local-home>
+            <local>com.opensymphony.module.propertyset.ejb.types.PropertyDateLocal</local>
+            <ejb-link>PropertyDate</ejb-link>
+         </ejb-local-ref>
+         <ejb-local-ref >
+            <ejb-ref-name>ejb/PropertyData</ejb-ref-name>
+            <ejb-ref-type>Entity</ejb-ref-type>
+            <local-home>com.opensymphony.module.propertyset.ejb.types.PropertyDataLocalHome</local-home>
+            <local>com.opensymphony.module.propertyset.ejb.types.PropertyDataLocal</local>
+            <ejb-link>PropertyData</ejb-link>
+         </ejb-local-ref>
+         <ejb-local-ref >
+            <ejb-ref-name>ejb/PropertyString</ejb-ref-name>
+            <ejb-ref-type>Entity</ejb-ref-type>
+            <local-home>com.opensymphony.module.propertyset.ejb.types.PropertyStringLocalHome</local-home>
+            <local>com.opensymphony.module.propertyset.ejb.types.PropertyStringLocal</local>
+            <ejb-link>PropertyString</ejb-link>
+         </ejb-local-ref>
+         <ejb-local-ref >
+            <ejb-ref-name>ejb/PropertyDecimal</ejb-ref-name>
+            <ejb-ref-type>Entity</ejb-ref-type>
+            <local-home>com.opensymphony.module.propertyset.ejb.types.PropertyDecimalLocalHome</local-home>
+            <local>com.opensymphony.module.propertyset.ejb.types.PropertyDecimalLocal</local>
+            <ejb-link>PropertyDecimal</ejb-link>
+         </ejb-local-ref>
+
+         <query>
+            <query-method>
+               <method-name>findByNameAndId</method-name>
+               <method-params>
+                  <method-param>java.lang.String</method-param>
+                  <method-param>long</method-param>
+               </method-params>
+            </query-method>
+            <ejb-ql><![CDATA[SELECT DISTINCT OBJECT(o) FROM PropertyEntry o WHERE o.entityName = ?1 AND o.entityId = ?2]]></ejb-ql>
+         </query>
+         <query>
+            <query-method>
+               <method-name>findByEntity</method-name>
+               <method-params>
+                  <method-param>java.lang.String</method-param>
+                  <method-param>long</method-param>
+                  <method-param>java.lang.String</method-param>
+               </method-params>
+            </query-method>
+            <ejb-ql><![CDATA[SELECT DISTINCT OBJECT(o) FROM PropertyEntry o WHERE o.entityName = ?1 AND o.entityId = ?2 AND o.key = ?3]]></ejb-ql>
+         </query>
+	  <!-- Write a file named ejb-finders-PropertyEntryEJB.xml if you want to define extra finders. -->
+      </entity>
+
+      <entity >
+         <description><![CDATA[AbstractValueEntityEJB concrete implementation optimized for storing short Strings.]]></description>
+
+         <ejb-name>PropertyString</ejb-name>
+
+         <local-home>com.opensymphony.module.propertyset.ejb.types.PropertyStringLocalHome</local-home>
+         <local>com.opensymphony.module.propertyset.ejb.types.PropertyStringLocal</local>
+
+         <ejb-class>com.opensymphony.module.propertyset.ejb.types.PropertyStringCMP</ejb-class>
+         <persistence-type>Container</persistence-type>
+         <prim-key-class>java.lang.Long</prim-key-class>
+         <reentrant>False</reentrant>
+         <cmp-version>2.x</cmp-version>
+         <abstract-schema-name>PropertyString</abstract-schema-name>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>id</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>string</field-name>
+         </cmp-field>
+         <primkey-field>id</primkey-field>
+
+	  <!-- Write a file named ejb-finders-StringEntityEJB.xml if you want to define extra finders. -->
+      </entity>
+
+      <entity >
+         <description><![CDATA[AbstractValueEntityEJB concrete implementation optimized for storing numbers.]]></description>
+
+         <ejb-name>PropertyNumber</ejb-name>
+
+         <local-home>com.opensymphony.module.propertyset.ejb.types.PropertyNumberLocalHome</local-home>
+         <local>com.opensymphony.module.propertyset.ejb.types.PropertyNumberLocal</local>
+
+         <ejb-class>com.opensymphony.module.propertyset.ejb.types.PropertyNumberCMP</ejb-class>
+         <persistence-type>Container</persistence-type>
+         <prim-key-class>java.lang.Long</prim-key-class>
+         <reentrant>False</reentrant>
+         <cmp-version>2.x</cmp-version>
+         <abstract-schema-name>PropertyNumber</abstract-schema-name>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>id</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>number</field-name>
+         </cmp-field>
+         <primkey-field>id</primkey-field>
+
+	  <!-- Write a file named ejb-finders-NumberEntityEJB.xml if you want to define extra finders. -->
+      </entity>
+
+      <entity >
+         <description><![CDATA[AbstractValueEntityEJB concrete implementation optimized for storing decimal numbers.]]></description>
+
+         <ejb-name>PropertyDecimal</ejb-name>
+
+         <local-home>com.opensymphony.module.propertyset.ejb.types.PropertyDecimalLocalHome</local-home>
+         <local>com.opensymphony.module.propertyset.ejb.types.PropertyDecimalLocal</local>
+
+         <ejb-class>com.opensymphony.module.propertyset.ejb.types.PropertyDecimalCMP</ejb-class>
+         <persistence-type>Container</persistence-type>
+         <prim-key-class>java.lang.Long</prim-key-class>
+         <reentrant>False</reentrant>
+         <cmp-version>2.x</cmp-version>
+         <abstract-schema-name>PropertyDecimal</abstract-schema-name>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>decimal</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>id</field-name>
+         </cmp-field>
+         <primkey-field>id</primkey-field>
+
+	  <!-- Write a file named ejb-finders-DecimalEntityEJB.xml if you want to define extra finders. -->
+      </entity>
+
+      <entity >
+         <description><![CDATA[AbstractValueEntityEJB concrete implementation optimized for storing binary data.]]></description>
+
+         <ejb-name>PropertyData</ejb-name>
+
+         <local-home>com.opensymphony.module.propertyset.ejb.types.PropertyDataLocalHome</local-home>
+         <local>com.opensymphony.module.propertyset.ejb.types.PropertyDataLocal</local>
+
+         <ejb-class>com.opensymphony.module.propertyset.ejb.types.PropertyDataCMP</ejb-class>
+         <persistence-type>Container</persistence-type>
+         <prim-key-class>java.lang.Long</prim-key-class>
+         <reentrant>False</reentrant>
+         <cmp-version>2.x</cmp-version>
+         <abstract-schema-name>PropertyData</abstract-schema-name>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>bytes</field-name>
+         </cmp-field>
+         <cmp-field >
+            <description><![CDATA[]]></description>
+            <field-name>id</field-name>
+         </cmp-field>
+         <primkey-field>id</primkey-field>
+
+	  <!-- Write a file named ejb-finders-DataEntityEJB.xml if you want to define extra finders. -->
+      </entity>
+
+     <!--
+       To add entity beans that you have deployment descriptor info for, add
+       a file to your XDoclet merge directory called entity-beans.xml that contains
+       the <entity></entity> markup for those beans.
+     -->
+
+      <!-- Message Driven Beans -->
+     <!--
+       To add message driven beans that you have deployment descriptor info for, add
+       a file to your XDoclet merge directory called message-driven-beans.xml that contains
+       the <message-driven></message-driven> markup for those beans.
+     -->
+
+   </enterprise-beans>
+
+   <!-- Relationships -->
+
+   <!-- Assembly Descriptor -->
+   <assembly-descriptor >
+     <!--
+       To add additional assembly descriptor info here, add a file to your
+       XDoclet merge directory called assembly-descriptor.xml that contains
+       the <assembly-descriptor></assembly-descriptor> markup.
+     -->
+
+      <method-permission >
+         <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <unchecked/>
+         <method >
+            <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+            <ejb-name>PropertyDate</ejb-name>
+            <method-name>*</method-name>
+         </method>
+      </method-permission>
+
+   <!-- finder permissions -->
+
+      <method-permission >
+         <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <unchecked/>
+         <method >
+            <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+            <ejb-name>PropertyEntry</ejb-name>
+            <method-name>*</method-name>
+         </method>
+      </method-permission>
+
+   <!-- finder permissions -->
+
+      <method-permission >
+         <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <unchecked/>
+         <method >
+            <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+            <ejb-name>PropertyString</ejb-name>
+            <method-name>*</method-name>
+         </method>
+      </method-permission>
+
+   <!-- finder permissions -->
+
+      <method-permission >
+         <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <unchecked/>
+         <method >
+            <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+            <ejb-name>PropertyStore</ejb-name>
+            <method-name>*</method-name>
+         </method>
+      </method-permission>
+
+   <!-- finder permissions -->
+
+      <method-permission >
+         <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <unchecked/>
+         <method >
+            <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+            <ejb-name>PropertyNumber</ejb-name>
+            <method-name>*</method-name>
+         </method>
+      </method-permission>
+
+   <!-- finder permissions -->
+
+      <method-permission >
+         <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <unchecked/>
+         <method >
+            <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+            <ejb-name>PropertyDecimal</ejb-name>
+            <method-name>*</method-name>
+         </method>
+      </method-permission>
+
+   <!-- finder permissions -->
+
+      <method-permission >
+         <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <unchecked/>
+         <method >
+            <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+            <ejb-name>PropertyData</ejb-name>
+            <method-name>*</method-name>
+         </method>
+      </method-permission>
+
+   <!-- finder permissions -->
+
+   <!-- transactions -->
+   <container-transaction >
+      <method >
+         <ejb-name>PropertyDate</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Supports</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>PropertyEntry</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Supports</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>PropertyString</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Supports</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>PropertyStore</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Supports</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>PropertyStore</ejb-name>
+         <method-intf>Remote</method-intf>
+         <method-name>removeEntry</method-name>
+         <method-params>
+            <method-param>java.lang.String</method-param>
+            <method-param>long</method-param>
+         </method-params>
+      </method>
+      <trans-attribute>Required</trans-attribute>
+   </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>PropertyNumber</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Supports</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>PropertyDecimal</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Supports</trans-attribute>
+    </container-transaction>
+   <container-transaction >
+      <method >
+         <ejb-name>PropertyData</ejb-name>
+          <method-name>*</method-name>
+       </method>
+       <trans-attribute>Supports</trans-attribute>
+    </container-transaction>
+
+   <!-- finder transactions -->
+   </assembly-descriptor>
+
+</ejb-jar>

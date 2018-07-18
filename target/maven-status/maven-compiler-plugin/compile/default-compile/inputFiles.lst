@@ -1,0 +1,3 @@
+/root/Documents/JiraPlugin/workflowExtension/add-workflow-extensions/src/main/java/com/example/plugins/tutorial/api/MyPluginComponent.java
+/root/Documents/JiraPlugin/workflowExtension/add-workflow-extensions/src/main/java/com/example/plugins/tutorial/jira/workflow/CloseParentIssuePostFunction.java
+/root/Documents/JiraPlugin/workflowExtension/add-workflow-extensions/src/main/java/com/example/plugins/tutorial/impl/MyPluginComponentImpl.java

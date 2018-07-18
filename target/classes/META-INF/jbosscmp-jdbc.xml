@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jbosscmp-jdbc PUBLIC "-//JBoss//DTD JBOSSCMP-JDBC 3.0//EN" "http://www.jboss.org/j2ee/dtd/jbosscmp-jdbc_3_0.dtd">
+
+<jbosscmp-jdbc>
+   <defaults>
+   </defaults>
+
+   <enterprise-beans>
+
+     <!--
+       To add beans that you have deployment descriptor info for, add
+       a file to your XDoclet merge directory called jbosscmp-jdbc-beans.xml
+       that contains the <entity></entity> markup for those beans.
+     -->
+
+      <entity>
+         <ejb-name>PropertyDate</ejb-name>
+         <table-name>OS_PROPERTYDATE</table-name>
+
+         <cmp-field>
+            <field-name>date</field-name>
+            <column-name>value</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>id</field-name>
+            <column-name>id</column-name>
+
+        </cmp-field>
+
+      </entity>
+
+      <entity>
+         <ejb-name>PropertyEntry</ejb-name>
+         <table-name>OS_PROPERTYENTRY</table-name>
+
+         <cmp-field>
+            <field-name>entityId</field-name>
+            <column-name>entityid</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>entityName</field-name>
+            <column-name>entityname</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>id</field-name>
+            <column-name>id</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>key</field-name>
+            <column-name>keyvalue</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>type</field-name>
+            <column-name>type</column-name>
+
+        </cmp-field>
+
+      </entity>
+
+      <entity>
+         <ejb-name>PropertyString</ejb-name>
+         <table-name>OS_PROPERTYSTRING</table-name>
+
+         <cmp-field>
+            <field-name>id</field-name>
+            <column-name>id</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>string</field-name>
+            <column-name>value</column-name>
+
+        </cmp-field>
+
+      </entity>
+
+      <entity>
+         <ejb-name>PropertyNumber</ejb-name>
+         <table-name>OS_PROPERTYNUMBER</table-name>
+
+         <cmp-field>
+            <field-name>id</field-name>
+            <column-name>id</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>number</field-name>
+            <column-name>value</column-name>
+
+        </cmp-field>
+
+      </entity>
+
+      <entity>
+         <ejb-name>PropertyDecimal</ejb-name>
+         <table-name>OS_PROPERTYDECIMAL</table-name>
+
+         <cmp-field>
+            <field-name>decimal</field-name>
+            <column-name>value</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>id</field-name>
+            <column-name>id</column-name>
+
+        </cmp-field>
+
+      </entity>
+
+      <entity>
+         <ejb-name>PropertyData</ejb-name>
+         <table-name>OS_PROPERTYDATA</table-name>
+
+         <cmp-field>
+            <field-name>bytes</field-name>
+            <column-name>value</column-name>
+
+        </cmp-field>
+         <cmp-field>
+            <field-name>id</field-name>
+            <column-name>id</column-name>
+
+        </cmp-field>
+
+      </entity>
+
+   </enterprise-beans>
+
+</jbosscmp-jdbc>

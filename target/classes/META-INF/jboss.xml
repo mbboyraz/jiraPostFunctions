@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jboss PUBLIC "-//JBoss//DTD JBOSS 3.0//EN" "http://www.jboss.org/j2ee/dtd/jboss_3_0.dtd">
+
+<jboss>
+
+   <enterprise-beans>
+
+     <!--
+       To add beans that you have deployment descriptor info for, add
+       a file to your XDoclet merge directory called jboss-beans.xml that contains
+       the <session></session>, <entity></entity> and <message-driven></message-driven>
+       markup for those beans.
+     -->
+
+      <entity>
+         <ejb-name>PropertyDate</ejb-name>
+         <local-jndi-name>PropertyDate</local-jndi-name>
+
+      </entity>
+      <entity>
+         <ejb-name>PropertyEntry</ejb-name>
+         <local-jndi-name>PropertyEntry</local-jndi-name>
+
+      </entity>
+      <entity>
+         <ejb-name>PropertyString</ejb-name>
+         <local-jndi-name>PropertyString</local-jndi-name>
+
+      </entity>
+      <entity>
+         <ejb-name>PropertyNumber</ejb-name>
+         <local-jndi-name>PropertyNumber</local-jndi-name>
+
+      </entity>
+      <entity>
+         <ejb-name>PropertyDecimal</ejb-name>
+         <local-jndi-name>PropertyDecimal</local-jndi-name>
+
+      </entity>
+      <entity>
+         <ejb-name>PropertyData</ejb-name>
+         <local-jndi-name>PropertyData</local-jndi-name>
+
+      </entity>
+
+      <session>
+         <ejb-name>PropertyStore</ejb-name>
+         <jndi-name>PropertyStore</jndi-name>
+
+      </session>
+
+   </enterprise-beans>
+
+   <resource-managers>
+   </resource-managers>
+
+</jboss>

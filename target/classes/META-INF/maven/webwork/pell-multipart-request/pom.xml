@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>webwork</groupId>
+	<artifactId>pell-multipart-request</artifactId>
+
+	<packaging>jar</packaging>
+	<version>1.31.0</version>
+
+	<description>
+		atlassian fork of the pell multipartrequest framework:
+		http://freshmeat.net/projects/multipartrequest
+	</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.3</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.4</source>
+					<target>1.4</target>
+				</configuration>
+			</plugin>
+			<!-- install & deploy to the maven 1 repository -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-one-plugin</artifactId>
+				<executions>
+					<execution>
+			            <id>install</id>
+						<goals>
+							<goal>install-maven-one-repository</goal>
+						</goals>
+					</execution>
+					<execution>
+			            <id>deploy</id>
+						<goals>
+							<goal>deploy-maven-one-repository</goal>
+						</goals>
+						<configuration>
+				            <remoteRepositoryId>atlassian-m1-repository</remoteRepositoryId>
+							<remoteRepositoryUrl>scp://repository.atlassian.com/var/www/html/repository</remoteRepositoryUrl>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<distributionManagement>
+		<!-- use the following if you're not using a snapshot version. -->
+		<repository>
+			<id>atlassian-m2-repository</id>
+			<name>Atlassian Maven2 Repository</name>
+			<url>
+				scp://repository.atlassian.com/var/www/html/repository/maven2
+			</url>
+		</repository>
+		<!-- use the following if you ARE using a snapshot version. -->
+		<snapshotRepository>
+			<id>atlassian-m2-snapshot-repository</id>
+			<name>Atlassian Maven Repository</name>
+			<url>
+				scp://repository.atlassian.com/var/www/html/repository/maven2
+			</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+</project>

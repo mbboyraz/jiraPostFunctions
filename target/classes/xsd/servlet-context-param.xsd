@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!-- This should eventually go into Atlassian Plugins -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:include schemaLocation="common.xsd"/>
+    <xs:include schemaLocation="atlassian-plugin-common.xsd"/>
+
+    <xs:complexType name="ServletContextParamType">
+        <xs:annotation>
+            <xs:documentation>
+                Servlet Context Parameter plugin modules allow you to set parameters in the Java Servlet context shared
+                by your plugin's servlets, filters, and listeners.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="AbstractPluginModuleType">
+                <xs:sequence>
+                    <xs:element name="param-name" type="xs:string" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="param-value" type="xs:string" minOccurs="1" maxOccurs="1" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+</xs:schema>

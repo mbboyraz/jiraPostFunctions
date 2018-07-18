@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<!DOCTYPE orion-ejb-jar PUBLIC "-//Evermind//DTD Enterprise JavaBeans 1.1 runtime//EN" "http://www.orionserver.com/dtds/orion-ejb-jar.dtd">
+
+<orion-ejb-jar deployment-version="2.0">
+
+   <enterprise-beans>
+
+      <!-- Session Beans -->
+      <session-deployment name="PropertyStore"
+									location="PropertyStore"
+                          >
+
+      </session-deployment>
+
+      <!-- Entity Beans -->
+      <entity-deployment name="PropertyDate"
+									location="PropertyDate"
+                          table="OS_PROPERTYDATE"
+                          >
+
+       <primkey-mapping>
+              <cmp-field-mapping name="id" persistence-name="id" />
+
+       </primkey-mapping>
+
+              <cmp-field-mapping name="date" persistence-name="value" />
+
+      </entity-deployment>
+      <entity-deployment name="PropertyEntry"
+									location="PropertyEntry"
+                          table="OS_PROPERTYENTRY"
+                          >
+
+       <primkey-mapping>
+              <cmp-field-mapping name="id" persistence-name="id" />
+
+       </primkey-mapping>
+
+              <cmp-field-mapping name="entityId" persistence-name="entityid" />
+
+              <cmp-field-mapping name="entityName" persistence-name="entityname" />
+
+              <cmp-field-mapping name="key" persistence-name="keyvalue" />
+
+              <cmp-field-mapping name="type" persistence-name="type" />
+
+      </entity-deployment>
+      <entity-deployment name="PropertyString"
+									location="PropertyString"
+                          table="OS_PROPERTYSTRING"
+                          >
+
+       <primkey-mapping>
+              <cmp-field-mapping name="id" persistence-name="id" />
+
+       </primkey-mapping>
+
+              <cmp-field-mapping name="string" persistence-name="value" />
+
+      </entity-deployment>
+      <entity-deployment name="PropertyNumber"
+									location="PropertyNumber"
+                          table="OS_PROPERTYNUMBER"
+                          >
+
+       <primkey-mapping>
+              <cmp-field-mapping name="id" persistence-name="id" />
+
+       </primkey-mapping>
+
+              <cmp-field-mapping name="number" persistence-name="value" />
+
+      </entity-deployment>
+      <entity-deployment name="PropertyDecimal"
+									location="PropertyDecimal"
+                          table="OS_PROPERTYDECIMAL"
+                          >
+
+       <primkey-mapping>
+              <cmp-field-mapping name="id" persistence-name="id" />
+
+       </primkey-mapping>
+
+              <cmp-field-mapping name="decimal" persistence-name="value" />
+
+      </entity-deployment>
+      <entity-deployment name="PropertyData"
+									location="PropertyData"
+                          table="OS_PROPERTYDATA"
+                          >
+
+       <primkey-mapping>
+              <cmp-field-mapping name="id" persistence-name="id" />
+
+       </primkey-mapping>
+
+              <cmp-field-mapping name="bytes" persistence-name="value" />
+
+      </entity-deployment>
+
+      <!-- Message Driven Beans -->
+
+   </enterprise-beans>
+
+</orion-ejb-jar>

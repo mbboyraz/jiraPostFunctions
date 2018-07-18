@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!-- This should eventually go into Atlassian Plugins -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:include schemaLocation="common.xsd"/>
+    <xs:include schemaLocation="atlassian-plugin-common.xsd"/>
+
+    <xs:complexType name="ServletType">
+        <xs:annotation>
+            <xs:documentation>
+                Servlet plugin modules enable you to deploy Java servlets as a part of your plugins.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="AbstractPluginModuleType">
+                <xs:sequence>
+                    <xs:element name="init-param" type="InitParamType" minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>
+                                Initialisation parameters for the servlet, specified using param-name and param-value
+                                sub-elements, just as in web.xml.
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="url-pattern" type="UrlPatternType" minOccurs="1" maxOccurs="unbounded"/>
+                </xs:sequence>
+                <xs:attribute name="class" type="ClassType" use="required">
+                    <xs:annotation>
+                        <xs:documentation>
+                            The servlet Java class. Must be a subclass of javax.servlet.http.HttpServlet.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+</xs:schema>
