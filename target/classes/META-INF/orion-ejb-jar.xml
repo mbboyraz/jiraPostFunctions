@@ -6,95 +6,123 @@
    <enterprise-beans>
 
       <!-- Session Beans -->
-      <session-deployment name="PropertyStore"
-									location="PropertyStore"
+      <session-deployment name="WorkflowStore"
+									location="WorkflowStore"
+                          >
+
+      </session-deployment>
+      <session-deployment name="Workflow"
+									location="Workflow"
                           >
 
       </session-deployment>
 
       <!-- Entity Beans -->
-      <entity-deployment name="PropertyDate"
-									location="PropertyDate"
-                          table="OS_PROPERTYDATE"
+      <entity-deployment name="HistoryStepPrev"
+									location="HistoryStepPrev"
+                          table="OS_HISTORYSTEP_PREV"
                           >
 
        <primkey-mapping>
-              <cmp-field-mapping name="id" persistence-name="id" />
+          <cmp-field-mapping>
+              <fields>
+              <cmp-field-mapping name="id" persistence-name="ID" />
 
+              <cmp-field-mapping name="previousId" persistence-name="PREVIOUS_ID" />
+
+              </fields>
+          </cmp-field-mapping>
        </primkey-mapping>
-
-              <cmp-field-mapping name="date" persistence-name="value" />
 
       </entity-deployment>
-      <entity-deployment name="PropertyEntry"
-									location="PropertyEntry"
-                          table="OS_PROPERTYENTRY"
+      <entity-deployment name="HistoryStep"
+									location="HistoryStep"
+                          table="OS_HISTORYSTEP"
                           >
 
        <primkey-mapping>
-              <cmp-field-mapping name="id" persistence-name="id" />
+              <cmp-field-mapping name="id" persistence-name="ID" />
 
        </primkey-mapping>
 
-              <cmp-field-mapping name="entityId" persistence-name="entityid" />
+              <cmp-field-mapping name="actionId" persistence-name="ACTION_ID" />
 
-              <cmp-field-mapping name="entityName" persistence-name="entityname" />
+              <cmp-field-mapping name="caller" persistence-name="CALLER" />
 
-              <cmp-field-mapping name="key" persistence-name="keyvalue" />
+              <cmp-field-mapping name="dueDate" persistence-name="DUE_DATE" />
 
-              <cmp-field-mapping name="type" persistence-name="type" />
+              <cmp-field-mapping name="entryId" persistence-name="ENTRY_ID" />
+
+              <cmp-field-mapping name="finishDate" persistence-name="FINISH_DATE" />
+
+              <cmp-field-mapping name="owner" persistence-name="OWNER" />
+
+              <cmp-field-mapping name="startDate" persistence-name="START_DATE" />
+
+              <cmp-field-mapping name="status" persistence-name="STATUS" />
+
+              <cmp-field-mapping name="stepId" persistence-name="STEP_ID" />
 
       </entity-deployment>
-      <entity-deployment name="PropertyString"
-									location="PropertyString"
-                          table="OS_PROPERTYSTRING"
+      <entity-deployment name="CurrentStepPrev"
+									location="CurrentStepPrev"
+                          table="OS_CURRENTSTEP_PREV"
                           >
 
        <primkey-mapping>
-              <cmp-field-mapping name="id" persistence-name="id" />
+          <cmp-field-mapping>
+              <fields>
+              <cmp-field-mapping name="id" persistence-name="ID" />
 
+              <cmp-field-mapping name="previousId" persistence-name="PREVIOUS_ID" />
+
+              </fields>
+          </cmp-field-mapping>
        </primkey-mapping>
-
-              <cmp-field-mapping name="string" persistence-name="value" />
 
       </entity-deployment>
-      <entity-deployment name="PropertyNumber"
-									location="PropertyNumber"
-                          table="OS_PROPERTYNUMBER"
+      <entity-deployment name="WorkflowEntry"
+									location="WorkflowEntry"
+                          table="OS_WFENTRY"
                           >
 
        <primkey-mapping>
-              <cmp-field-mapping name="id" persistence-name="id" />
+              <cmp-field-mapping name="id" persistence-name="ID" />
 
        </primkey-mapping>
 
-              <cmp-field-mapping name="number" persistence-name="value" />
+              <cmp-field-mapping name="state" persistence-name="STATE" />
+
+              <cmp-field-mapping name="workflowName" persistence-name="NAME" />
 
       </entity-deployment>
-      <entity-deployment name="PropertyDecimal"
-									location="PropertyDecimal"
-                          table="OS_PROPERTYDECIMAL"
+      <entity-deployment name="CurrentStep"
+									location="CurrentStep"
+                          table="OS_CURRENTSTEP"
                           >
 
        <primkey-mapping>
-              <cmp-field-mapping name="id" persistence-name="id" />
+              <cmp-field-mapping name="id" persistence-name="ID" />
 
        </primkey-mapping>
 
-              <cmp-field-mapping name="decimal" persistence-name="value" />
+              <cmp-field-mapping name="actionId" persistence-name="ACTION_ID" />
 
-      </entity-deployment>
-      <entity-deployment name="PropertyData"
-									location="PropertyData"
-                          table="OS_PROPERTYDATA"
-                          >
+              <cmp-field-mapping name="caller" persistence-name="CALLER" />
 
-       <primkey-mapping>
-              <cmp-field-mapping name="id" persistence-name="id" />
+              <cmp-field-mapping name="dueDate" persistence-name="DUE_DATE" />
 
-       </primkey-mapping>
+              <cmp-field-mapping name="entryId" persistence-name="ENTRY_ID" />
 
-              <cmp-field-mapping name="bytes" persistence-name="value" />
+              <cmp-field-mapping name="finishDate" persistence-name="FINISH_DATE" />
+
+              <cmp-field-mapping name="owner" persistence-name="OWNER" />
+
+              <cmp-field-mapping name="startDate" persistence-name="START_DATE" />
+
+              <cmp-field-mapping name="status" persistence-name="STATUS" />
+
+              <cmp-field-mapping name="stepId" persistence-name="STEP_ID" />
 
       </entity-deployment>
 

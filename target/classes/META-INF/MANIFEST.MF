@@ -1,18 +1,18 @@
 Manifest-Version: 1.0
-Atlassian-Build-Date: 2018-07-18T12:16:59+0300
+Atlassian-Build-Date: 2018-07-18T15:38:55+0300
 Atlassian-Plugin-Key: com.example.plugins.tutorial.add-workflow-extensio
  ns
-Bnd-LastModified: 1531905455350
+Bnd-LastModified: 1531917538167
 Build-Jdk: 1.8.0_171
 Built-By: root
-Bundle-Description: This is post function plugin for Jira
-Bundle-DocURL: http://www.obss.com.tr/
+Bundle-Description: This plugin adds workflow extensions to JIRA.
+Bundle-DocURL: http://www.example.com/
 Bundle-ManifestVersion: 2
 Bundle-Name: add-workflow-extensions
 Bundle-SymbolicName: com.example.plugins.tutorial.add-workflow-extension
  s
-Bundle-Vendor: OBSS
-Bundle-Version: 1.0.0.SNAPSHOT
+Bundle-Vendor: Example Company
+Bundle-Version: 1.0.0
 Created-By: Apache Maven Bundle Plugin
 Export-Package: com.example.plugins.tutorial.api;version="1.0.0"
 Import-Package: org.springframework.osgi.context;resolution:=optional,or
@@ -22,64 +22,41 @@ Import-Package: org.springframework.osgi.context;resolution:=optional,or
  ini.blueprint.service.exporter;resolution:=optional,org.eclipse.gemini.
  blueprint.service.exporter.support;resolution:=optional,org.eclipse.gem
  ini.blueprint.service.importer.support;resolution:=optional,bsh,com.atl
- assian.annotations.tenancy,com.atlassian.http.url,com.atlassian.inject,
- com.atlassian.instrumentation.utils.dbc,com.atlassian.json.marshal,com.
- atlassian.json.marshal.wrapped,com.atlassian.net,com.atlassian.plugin.o
- sgi.factory,com.atlassian.plugin.osgi.factory.descriptor,com.atlassian.
- sal.api,com.atlassian.sal.api.license,com.atlassian.sal.api.net,com.atl
- assian.sal.api.user,com.atlassian.user,com.atlassian.webresource.spi,co
- m.example.plugins.tutorial.api,com.ibm.bsf,com.ibm.bsf.util,com.ibm.uvm
- .tools,com.opensymphony.user,com.opensymphony.xwork,com.p6spy.engine.lo
- gging.appender,com.sun.jdmk.comm,com.sun.msv.datatype,com.sun.msv.datat
- ype.xsd,com.werken.xpath,electric.registry,electric.util,javax.accessib
- ility,javax.crypto,javax.crypto.spec,javax.ejb,javax.imageio,javax.imag
- eio.event,javax.imageio.metadata,javax.imageio.plugins.jpeg,javax.image
- io.spi,javax.imageio.stream,javax.inject,javax.jmdns,javax.jms,javax.ma
- nagement,javax.naming,javax.net,javax.net.ssl,javax.persistence,javax.p
- ersistence.spi,javax.rmi,javax.security.auth.callback,javax.security.au
- th.x500,javax.security.sasl,javax.servlet,javax.servlet.descriptor,java
- x.servlet.http,javax.servlet.jsp,javax.servlet.jsp.tagext,javax.sql,jav
- ax.swing,javax.swing.border,javax.swing.event,javax.swing.filechooser,j
- avax.swing.plaf,javax.swing.table,javax.swing.text,javax.swing.text.htm
- l,javax.swing.text.html.parser,javax.swing.tree,javax.xml.bind.annotati
- on,javax.xml.bind.annotation.adapters,javax.xml.datatype,javax.xml.name
- space,javax.xml.parsers,javax.xml.transform,javax.xml.transform.dom,jav
- ax.xml.transform.sax,javax.xml.transform.stream,javax.xml.validation,ju
- nit.framework,magick,net.jcip.annotations,net.sf.hibernate,net.sf.hiber
- nate.cfg,net.sf.hibernate.expression,net.sf.hibernate.type,ognl,org.apa
- che.bsf,org.apache.commons.dbcp2,org.apache.commons.logging,org.apache.
- log,org.apache.log.format,org.apache.log.output.io,org.apache.lucene.do
- cument,org.apache.lucene.index,org.apache.lucene.queryParser,org.apache
- .lucene.search,org.apache.lucene.util,org.apache.ojb.broker,org.apache.
- ojb.broker.query,org.apache.tools.ant,org.apache.tools.ant.taskdefs,org
- .apache.tools.ant.types,org.apache.tools.ant.types.resources,org.apache
- .xalan.serialize,org.apache.xml.resolver,org.apache.xml.resolver.reader
- s,org.apache.xpath,org.codehaus.xfire,org.codehaus.xfire.aegis,org.code
- haus.xfire.aegis.type,org.codehaus.xfire.service,org.codehaus.xfire.ser
- vice.binding,org.codehaus.xfire.transport,org.codehaus.xfire.transport.
- http,org.enhydra.jdbc.pool,org.enhydra.jdbc.standard,org.gjt.xpp,org.hi
- bernate,org.hibernate.annotations,org.hibernate.cfg,org.hibernate.class
- ic,org.hibernate.criterion,org.hibernate.type,org.jdom,org.jdom.input,o
- rg.jdom.output,org.joda.convert,org.jsoup,org.jsoup.helper,org.jsoup.no
- des,org.jsoup.parser,org.jsoup.select,org.junit,org.junit.internal.runn
- ers,org.junit.rules,org.junit.runner,org.junit.runner.manipulation,org.
- junit.runner.notification,org.junit.runners,org.junit.runners.model,org
- .mockito.asm.signature,org.objectweb.jotm,org.objectweb.transaction.jta
- ,org.osgi.framework,org.prevayler,org.quartz,org.quartz.impl,org.relaxn
- g.datatype,org.springframework.aop.support,org.springframework.beans,or
+ assian.jira.bc.issue,com.atlassian.jira.component,com.atlassian.jira.co
+ nfig,com.atlassian.jira.exception,com.atlassian.jira.issue,com.atlassia
+ n.jira.issue.comments,com.atlassian.jira.issue.comparator,com.atlassian
+ .jira.issue.fields,com.atlassian.jira.issue.fields.layout.field,com.atl
+ assian.jira.issue.link,com.atlassian.jira.issue.priority,com.atlassian.
+ jira.issue.status,com.atlassian.jira.issue.util,com.atlassian.jira.plug
+ in.workflow,com.atlassian.jira.project,com.atlassian.jira.security,com.
+ atlassian.jira.user,com.atlassian.jira.util.collect,com.atlassian.jira.
+ workflow,com.atlassian.jira.workflow.condition,com.atlassian.jira.workf
+ low.function.issue,com.atlassian.plugin.osgi.factory,com.opensymphony.m
+ odule.sequence,com.opensymphony.provider,com.opensymphony.provider.bean
+ ,com.opensymphony.user,com.opensymphony.util,com.opensymphony.xwork,ele
+ ctric.registry,electric.util,javax.ejb,javax.jms,javax.mail,javax.mail.
+ internet,javax.naming,javax.persistence,javax.persistence.spi,javax.rmi
+ ,javax.servlet,javax.servlet.http,javax.sql,javax.xml.parsers,javax.xml
+ .transform,net.sf.hibernate,net.sf.hibernate.cfg,net.sf.hibernate.expre
+ ssion,net.sf.hibernate.type,org.apache.bsf,org.apache.commons.lang,org.
+ apache.commons.logging,org.apache.ojb.broker,org.apache.ojb.broker.quer
+ y,org.apache.velocity,org.apache.velocity.app,org.apache.velocity.conte
+ xt,org.codehaus.xfire,org.codehaus.xfire.aegis,org.codehaus.xfire.aegis
+ .type,org.codehaus.xfire.service,org.codehaus.xfire.service.binding,org
+ .codehaus.xfire.transport,org.codehaus.xfire.transport.http,org.hiberna
+ te,org.hibernate.annotations,org.hibernate.cfg,org.hibernate.classic,or
+ g.hibernate.criterion,org.hibernate.type,org.ofbiz.core.entity,org.ofbi
+ z.core.util,org.osgi.framework,org.prevayler,org.quartz,org.quartz.impl
+ ,org.slf4j,org.springframework.aop.support,org.springframework.beans,or
  g.springframework.beans.factory,org.springframework.beans.factory.annot
  ation,org.springframework.beans.factory.config,org.springframework.bean
  s.factory.parsing,org.springframework.beans.factory.support,org.springf
  ramework.beans.factory.xml,org.springframework.context,org.springframew
- ork.context.annotation,org.springframework.context.event,org.springfram
- ework.core,org.springframework.core.io,org.springframework.orm.hibernat
- e,org.springframework.orm.hibernate.support,org.springframework.orm.hib
- ernate3,org.springframework.stereotype,org.springframework.util,org.spr
- ingframework.web.context,org.springframework.web.context.support,org.w3
- c.dom,org.w3c.dom.bootstrap,org.w3c.dom.events,org.w3c.dom.ls,org.w3c.d
- om.ranges,org.w3c.dom.traversal,org.w3c.dom.views,org.xml.sax,org.xml.s
- ax.ext,org.xml.sax.helpers,sun.io,sun.misc,sun.security.action,sun.secu
- rity.util,tyrex.resource,tyrex.resource.jdbc.xa,tyrex.tm
+ ork.context.annotation,org.springframework.core.io,org.springframework.
+ orm.hibernate,org.springframework.orm.hibernate.support,org.springframe
+ work.orm.hibernate3,org.springframework.stereotype,org.springframework.
+ util,org.w3c.dom,org.xml.sax,sun.misc,webwork.action,webwork.dispatcher
+Originally-Created-By: Apache Maven Bundle Plugin
 Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
 Spring-Context: *
 Tool: Bnd-2.4.1.201501161923

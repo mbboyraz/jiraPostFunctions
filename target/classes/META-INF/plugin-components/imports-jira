@@ -1,0 +1,5 @@
+com.atlassian.jira.config.ConstantsManager
+com.atlassian.jira.config.SubTaskManager
+com.atlassian.jira.issue.IssueManager
+com.atlassian.jira.security.JiraAuthenticationContext
+com.atlassian.jira.workflow.WorkflowManager

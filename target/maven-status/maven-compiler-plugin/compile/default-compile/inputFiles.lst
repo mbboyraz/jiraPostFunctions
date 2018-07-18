@@ -1,3 +1,6 @@
-/root/Documents/JiraPlugin/workflowExtension/add-workflow-extensions/src/main/java/com/example/plugins/tutorial/api/MyPluginComponent.java
-/root/Documents/JiraPlugin/workflowExtension/add-workflow-extensions/src/main/java/com/example/plugins/tutorial/jira/workflow/CloseParentIssuePostFunction.java
-/root/Documents/JiraPlugin/workflowExtension/add-workflow-extensions/src/main/java/com/example/plugins/tutorial/impl/MyPluginComponentImpl.java
+/root/Documents/JiraPlugin/workfolw/tutorial-jira-add-workflow-extensions/src/main/java/com/example/plugins/tutorial/jira/workflow/CreateOtherIssuePostFunction.java
+/root/Documents/JiraPlugin/workfolw/tutorial-jira-add-workflow-extensions/src/main/java/com/example/plugins/tutorial/jira/workflow/CloseIssueWorkflowValidator.java
+/root/Documents/JiraPlugin/workfolw/tutorial-jira-add-workflow-extensions/src/main/java/com/example/plugins/tutorial/jira/workflow/ParentIssueBlockingConditionFactory.java
+/root/Documents/JiraPlugin/workfolw/tutorial-jira-add-workflow-extensions/src/main/java/com/example/plugins/tutorial/jira/workflow/CloseParentIssuePostFunction.java
+/root/Documents/JiraPlugin/workfolw/tutorial-jira-add-workflow-extensions/src/main/java/com/example/plugins/tutorial/jira/workflow/ParentIssueBlockingCondition.java
+/root/Documents/JiraPlugin/workfolw/tutorial-jira-add-workflow-extensions/src/main/java/com/example/plugins/tutorial/jira/workflow/CloseIssueWorkflowValidatorFactory.java

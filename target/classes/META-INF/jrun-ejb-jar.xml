@@ -7,32 +7,32 @@
   <source>DefaultDataSource</source>
   <enterprise-beans>
     <session>
-      <ejb-name>PropertyStore</ejb-name>
-      <jndi-name>PropertyStore</jndi-name>
+      <ejb-name>WorkflowStore</ejb-name>
+      <jndi-name>WorkflowStore</jndi-name>
+    </session>
+    <session>
+      <ejb-name>Workflow</ejb-name>
+      <jndi-name>Workflow</jndi-name>
     </session>
     <entity>
-      <ejb-name>PropertyDate</ejb-name>
-      <jndi-name>PropertyDate</jndi-name>
+      <ejb-name>HistoryStepPrev</ejb-name>
+      <jndi-name>HistoryStepPrev</jndi-name>
     </entity>
     <entity>
-      <ejb-name>PropertyEntry</ejb-name>
-      <jndi-name>PropertyEntry</jndi-name>
+      <ejb-name>HistoryStep</ejb-name>
+      <jndi-name>HistoryStep</jndi-name>
     </entity>
     <entity>
-      <ejb-name>PropertyString</ejb-name>
-      <jndi-name>PropertyString</jndi-name>
+      <ejb-name>CurrentStepPrev</ejb-name>
+      <jndi-name>CurrentStepPrev</jndi-name>
     </entity>
     <entity>
-      <ejb-name>PropertyNumber</ejb-name>
-      <jndi-name>PropertyNumber</jndi-name>
+      <ejb-name>WorkflowEntry</ejb-name>
+      <jndi-name>WorkflowEntry</jndi-name>
     </entity>
     <entity>
-      <ejb-name>PropertyDecimal</ejb-name>
-      <jndi-name>PropertyDecimal</jndi-name>
-    </entity>
-    <entity>
-      <ejb-name>PropertyData</ejb-name>
-      <jndi-name>PropertyData</jndi-name>
+      <ejb-name>CurrentStep</ejb-name>
+      <jndi-name>CurrentStep</jndi-name>
     </entity>
   </enterprise-beans>
   <ejb-container>

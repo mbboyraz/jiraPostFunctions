@@ -1,0 +1,87 @@
+#set($i18nprefix = "create-other-issue-post-function.config")
+
+<tr>
+    <td class="fieldLabelArea">$i18n.getText("${i18nprefix}.projectsField.label")</td>
+    <td>
+        <select id="projectsFieldId" name="projectsFieldId">
+            <option value="0" title="Same project">Same project</option>
+            <optgroup label="$i18n.getText("${i18nprefix}.projectsField.optgroup")">
+                #foreach($projectsField in $projectsFields)
+                    #set($selected = false)
+                    #if($projectsFieldId == $projectsField.idAsLong)
+                        #set($selected = true)
+                    #end
+                    <option#if($selected) selected="selected"#end title="${projectsField.name}" value="${projectsField.idAsLong}">${projectsField.name}</option>
+                #end
+            </optgroup label="$i18n.getText("${i18nprefix}.projectCategory.optgroup")">
+        </select>
+    </td>
+</tr>
+<tr>
+    <td class="fieldLabelArea">Issue type:</td>
+    <td>
+        <select id="issueTypeId" name="issueTypeId">
+            #foreach($issueType in $issueTypes)
+                #set($selected = false)
+                #if($issueTypeId == $issueType.id)
+                    #set($selected = true)
+                #end
+                <option#if($selected) selected="selected"#end title="${issueType.name}" value="${issueType.id}">${issueType.name}</option>
+            #end
+        </select>
+    </td>
+</tr>
+<tr>
+    <td class="fieldLabelArea">Status:</td>
+    <td>
+        <select id="statusId" name="statusId">
+            #foreach($status in $stati)
+                #set($selected = false)
+                #if($statusId == $status.id)
+                    #set($selected = true)
+                #end
+                <option#if($selected) selected="selected"#end title="${status.name}" value="${status.id}">${status.name}</option>
+            #end
+        </select>
+    </td>
+</tr>
+<tr>
+    <td class="fieldLabelArea">Link type:</td>
+    <td>
+        <select id="linkTypeId" name="linkTypeId">
+            #foreach($linkType in $linkTypes)
+                #set($selected = false)
+                #if($linkTypeId == $linkType.id)
+                    #set($selected = true)
+                #end
+                <option#if($selected) selected="selected"#end title="${linkType.name}" value="${linkType.id}">${linkType.name}</option>
+            #end
+        </select>
+    </td>
+</tr>
+<tr>
+    <td class="fieldLabelArea">Copy assignee:</td>
+    <td>
+        <input type="checkbox" name="copyAssignee" value="$!copyAssignee" #if($copyAssignee == true) checked#end />
+    </td>
+</tr>
+<tr>
+    <td class="fieldLabelArea">Copy custom fields:</td>
+    <td>
+        <input type="checkbox" name="copyCustomFieldValues" value="$!copyCustomFieldValues" #if($copyCustomFieldValues == true) checked#end/>
+    </td>
+</tr>
+<tr>
+    <td class="fieldLabelArea">Log Message:</td>
+    <td>
+        <input name="logMessage" id="logMessage" value="$!logMessage" />
+    </td>
+</tr>
+
+
+<script>
+    new AJS.SingleSelect({
+        element: "AJS.$('#projectsFieldId')",
+        itemAttrDisplayed: "title",
+    });
+</script>d).

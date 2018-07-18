@@ -1,28 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+<atlassian-plugin key="${project.groupId}.${project.artifactId}" name="${project.name}" plugins-version="2">
   <plugin-info>
     <description>${project.description}</description>
     <version>${project.version}</version>
     <vendor name="${project.organization.name}" url="${project.organization.url}"/>
-    <param name="plugin-icon">images/pluginIcon.png</param>
-    <param name="plugin-logo">images/pluginLogo.png</param>
   </plugin-info>
-  <!-- add our i18n resource -->
-  <resource type="i18n" name="i18n" location="add-workflow-extensions"/>
-  <!-- add our web resources -->
-  <web-resource key="add-workflow-extensions-resources" name="add-workflow-extensions Web Resources">
-    <dependency>com.atlassian.auiplugin:ajs</dependency>
-    <resource type="download" name="add-workflow-extensions.css" location="/css/add-workflow-extensions.css"/>
-    <resource type="download" name="add-workflow-extensions.js" location="/js/add-workflow-extensions.js"/>
-    <resource type="download" name="images/" location="/images"/>
-    <context>add-workflow-extensions</context>
-  </web-resource>
-
+  <workflow-condition key="parent-issue-blocking-condition" name="Parent Issue Blocking Condition" i18n-name-key="parent-issue-blocking-condition.name" class="com.example.plugins.tutorial.jira.workflow.ParentIssueBlockingConditionFactory">
+    <description key="parent-issue-blocking-condition.description">The Parent Issue Blocking Condition Plugin</description>
+    <condition-class>com.example.plugins.tutorial.jira.workflow.ParentIssueBlockingCondition</condition-class>
+    <resource type="velocity" name="view" location="templates/conditions/parent-issue-blocking-condition.vm"/>
+    <resource type="velocity" name="input-parameters" location="templates/conditions/parent-issue-blocking-condition-input.vm"/>
+    <resource type="velocity" name="edit-parameters" location="templates/conditions/parent-issue-blocking-condition-input.vm"/>
+  </workflow-condition>
+  <resource type="i18n" name="i18n" location="atlassian-plugin"/>
   <workflow-function key="close-parent-issue-post-function" name="Close Parent Issue Post Function" i18n-name-key="close-parent-issue-post-function.name" class="com.atlassian.jira.plugin.workflow.WorkflowNoInputPluginFactory">
     <description key="close-parent-issue-post-function.description">The Close Parent Issue Post Function Plugin</description>
     <function-class>com.example.plugins.tutorial.jira.workflow.CloseParentIssuePostFunction</function-class>
     <resource type="velocity" name="view" location="templates/postfunctions/close-parent-issue-post-function.vm"/>
   </workflow-function>
-
+  <workflow-function key="create-other-issue-post-function" name="Create Other Issue Post Function" i18n-name-key="create-other-issue-post-function.name" class="com.schubergphilis.jira.plugins.workflow.CreateOtherIssuePostFunctionFactory">
+    <description key="create-other-issue-post-function.description">The Create Other Issue Post Function Plugin</description>
+    <function-class>om.example.plugins.tutorial.jira.workflow.CreateOtherIssuePostFunction</function-class>
+    <resource type="velocity" name="view" location="templates/postfunctions/create-other-issue-post-function.vm"/>
+    <resource type="velocity" name="input-parameters" location="templates/postfunctions/create-other-issue-post-function-input.vm"/>
+    <resource type="velocity" name="edit-parameters" location="templates/postfunctions/create-other-issue-post-function-input.vm"/>
+  </workflow-function>
+  <workflow-validator key="close-issue-workflow-validator" name="Close Issue Workflow Validator" i18n-name-key="close-issue-workflow-validator.name" class="com.example.plugins.tutorial.jira.workflow.CloseIssueWorkflowValidatorFactory">
+    <description key="close-issue-workflow-validator.description">The My Workflow Validator Plugin</description>
+    <validator-class>com.example.plugins.tutorial.jira.workflow.CloseIssueWorkflowValidator</validator-class>
+    <resource type="velocity" name="view" location="templates/validators/close-issue-workflow-validator.vm"/>
+    <resource type="velocity" name="input-parameters" location="templates/validators/close-issue-workflow-validator.vm"/>
+    <resource type="velocity" name="edit-parameters" location="templates/validators/close-issue-workflow-validator.vm"/>
+  </workflow-validator>
 </atlassian-plugin>

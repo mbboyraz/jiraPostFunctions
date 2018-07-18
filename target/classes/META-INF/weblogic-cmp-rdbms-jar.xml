@@ -1,139 +1,216 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!DOCTYPE weblogic-rdbms-jar PUBLIC "-//BEA Systems, Inc.//DTD WebLogic 7.0.0 EJB RDBMS Persistence//EN" "http://www.bea.com/servers/wls700/dtd/weblogic-rdbms20-persistence-700.dtd">
+<!DOCTYPE weblogic-rdbms-jar PUBLIC "-//BEA Systems, Inc.//DTD WebLogic 8.1.0 EJB RDBMS Persistence//EN" "http://www.bea.com/servers/wls810/dtd/weblogic-rdbms20-persistence-810.dtd">
 
 <weblogic-rdbms-jar>
    <weblogic-rdbms-bean>
-      <ejb-name>PropertyDate</ejb-name>
+      <ejb-name>HistoryStepPrev</ejb-name>
       <data-source-name>defaultDS</data-source-name>
       <table-map>
-      <table-name>OS_PROPERTYDATE</table-name>
-      <field-map>
-         <cmp-field>date</cmp-field>
-         <dbms-column>value</dbms-column>
-      </field-map>
+      <table-name>OS_HISTORYSTEP_PREV</table-name>
       <field-map>
          <cmp-field>id</cmp-field>
-         <dbms-column>id</dbms-column>
-      </field-map>
-      </table-map>
-
-   </weblogic-rdbms-bean>
-   <weblogic-rdbms-bean>
-      <ejb-name>PropertyEntry</ejb-name>
-      <data-source-name>defaultDS</data-source-name>
-      <table-map>
-      <table-name>OS_PROPERTYENTRY</table-name>
-      <field-map>
-         <cmp-field>entityId</cmp-field>
-         <dbms-column>entityid</dbms-column>
+         <dbms-column>ID</dbms-column>
       </field-map>
       <field-map>
-         <cmp-field>entityName</cmp-field>
-         <dbms-column>entityname</dbms-column>
-      </field-map>
-      <field-map>
-         <cmp-field>id</cmp-field>
-         <dbms-column>id</dbms-column>
-      </field-map>
-      <field-map>
-         <cmp-field>key</cmp-field>
-         <dbms-column>keyvalue</dbms-column>
-      </field-map>
-      <field-map>
-         <cmp-field>type</cmp-field>
-         <dbms-column>type</dbms-column>
+         <cmp-field>previousId</cmp-field>
+         <dbms-column>PREVIOUS_ID</dbms-column>
       </field-map>
       </table-map>
 
       <weblogic-query>
          <query-method>
-            <method-name>findByNameAndId</method-name>
+            <method-name>findByStepId</method-name>
             <method-params>
-               <method-param>java.lang.String</method-param>
                <method-param>long</method-param>
             </method-params>
          </query-method>
-         <weblogic-ql><![CDATA[SELECT DISTINCT OBJECT(o) FROM PropertyEntry o WHERE o.entityName = ?1 AND o.entityId = ?2]]></weblogic-ql>
+
+         <weblogic-ql><![CDATA[SELECT DISTINCT OBJECT(o) from HistoryStepPrev o where o.id = ?1]]></weblogic-ql>
       </weblogic-query>
+
+   </weblogic-rdbms-bean>
+   <weblogic-rdbms-bean>
+      <ejb-name>HistoryStep</ejb-name>
+      <data-source-name>defaultDS</data-source-name>
+      <table-map>
+      <table-name>OS_HISTORYSTEP</table-name>
+      <field-map>
+         <cmp-field>actionId</cmp-field>
+         <dbms-column>ACTION_ID</dbms-column>
+      </field-map>
+      <field-map>
+         <cmp-field>caller</cmp-field>
+         <dbms-column>CALLER</dbms-column>
+      </field-map>
+      <field-map>
+         <cmp-field>dueDate</cmp-field>
+         <dbms-column>DUE_DATE</dbms-column>
+      </field-map>
+      <field-map>
+         <cmp-field>entryId</cmp-field>
+         <dbms-column>ENTRY_ID</dbms-column>
+      </field-map>
+      <field-map>
+         <cmp-field>finishDate</cmp-field>
+         <dbms-column>FINISH_DATE</dbms-column>
+      </field-map>
+      <field-map>
+         <cmp-field>id</cmp-field>
+         <dbms-column>ID</dbms-column>
+      </field-map>
+      <field-map>
+         <cmp-field>owner</cmp-field>
+         <dbms-column>OWNER</dbms-column>
+      </field-map>
+      <field-map>
+         <cmp-field>startDate</cmp-field>
+         <dbms-column>START_DATE</dbms-column>
+      </field-map>
+      <field-map>
+         <cmp-field>status</cmp-field>
+         <dbms-column>STATUS</dbms-column>
+      </field-map>
+      <field-map>
+         <cmp-field>stepId</cmp-field>
+         <dbms-column>STEP_ID</dbms-column>
+      </field-map>
+      </table-map>
+
       <weblogic-query>
          <query-method>
-            <method-name>findByEntity</method-name>
+            <method-name>findByEntryId</method-name>
             <method-params>
-               <method-param>java.lang.String</method-param>
                <method-param>long</method-param>
-               <method-param>java.lang.String</method-param>
             </method-params>
          </query-method>
-         <weblogic-ql><![CDATA[SELECT DISTINCT OBJECT(o) FROM PropertyEntry o WHERE o.entityName = ?1 AND o.entityId = ?2 AND o.key = ?3]]></weblogic-ql>
+
+         <weblogic-ql><![CDATA[SELECT DISTINCT OBJECT(o) from HistoryStep o where o.entryId = ?1]]></weblogic-ql>
       </weblogic-query>
 
    </weblogic-rdbms-bean>
    <weblogic-rdbms-bean>
-      <ejb-name>PropertyString</ejb-name>
+      <ejb-name>CurrentStepPrev</ejb-name>
       <data-source-name>defaultDS</data-source-name>
       <table-map>
-      <table-name>OS_PROPERTYSTRING</table-name>
+      <table-name>OS_CURRENTSTEP_PREV</table-name>
       <field-map>
          <cmp-field>id</cmp-field>
-         <dbms-column>id</dbms-column>
+         <dbms-column>ID</dbms-column>
       </field-map>
       <field-map>
-         <cmp-field>string</cmp-field>
-         <dbms-column>value</dbms-column>
+         <cmp-field>previousId</cmp-field>
+         <dbms-column>PREVIOUS_ID</dbms-column>
+      </field-map>
+      </table-map>
+
+      <weblogic-query>
+         <query-method>
+            <method-name>findByStepId</method-name>
+            <method-params>
+               <method-param>long</method-param>
+            </method-params>
+         </query-method>
+
+         <weblogic-ql><![CDATA[SELECT DISTINCT OBJECT(o) from CurrentStepPrev o where o.id = ?1]]></weblogic-ql>
+      </weblogic-query>
+
+   </weblogic-rdbms-bean>
+   <weblogic-rdbms-bean>
+      <ejb-name>WorkflowEntry</ejb-name>
+      <data-source-name>defaultDS</data-source-name>
+      <table-map>
+      <table-name>OS_WFENTRY</table-name>
+      <field-map>
+         <cmp-field>id</cmp-field>
+         <dbms-column>ID</dbms-column>
+      </field-map>
+      <field-map>
+         <cmp-field>state</cmp-field>
+         <dbms-column>STATE</dbms-column>
+      </field-map>
+      <field-map>
+         <cmp-field>workflowName</cmp-field>
+         <dbms-column>NAME</dbms-column>
       </field-map>
       </table-map>
 
    </weblogic-rdbms-bean>
    <weblogic-rdbms-bean>
-      <ejb-name>PropertyNumber</ejb-name>
+      <ejb-name>CurrentStep</ejb-name>
       <data-source-name>defaultDS</data-source-name>
       <table-map>
-      <table-name>OS_PROPERTYNUMBER</table-name>
+      <table-name>OS_CURRENTSTEP</table-name>
       <field-map>
-         <cmp-field>id</cmp-field>
-         <dbms-column>id</dbms-column>
+         <cmp-field>actionId</cmp-field>
+         <dbms-column>ACTION_ID</dbms-column>
       </field-map>
       <field-map>
-         <cmp-field>number</cmp-field>
-         <dbms-column>value</dbms-column>
-      </field-map>
-      </table-map>
-
-   </weblogic-rdbms-bean>
-   <weblogic-rdbms-bean>
-      <ejb-name>PropertyDecimal</ejb-name>
-      <data-source-name>defaultDS</data-source-name>
-      <table-map>
-      <table-name>OS_PROPERTYDECIMAL</table-name>
-      <field-map>
-         <cmp-field>decimal</cmp-field>
-         <dbms-column>value</dbms-column>
+         <cmp-field>caller</cmp-field>
+         <dbms-column>CALLER</dbms-column>
       </field-map>
       <field-map>
-         <cmp-field>id</cmp-field>
-         <dbms-column>id</dbms-column>
+         <cmp-field>dueDate</cmp-field>
+         <dbms-column>DUE_DATE</dbms-column>
       </field-map>
-      </table-map>
-
-   </weblogic-rdbms-bean>
-   <weblogic-rdbms-bean>
-      <ejb-name>PropertyData</ejb-name>
-      <data-source-name>defaultDS</data-source-name>
-      <table-map>
-      <table-name>OS_PROPERTYDATA</table-name>
       <field-map>
-         <cmp-field>bytes</cmp-field>
-         <dbms-column>value</dbms-column>
+         <cmp-field>entryId</cmp-field>
+         <dbms-column>ENTRY_ID</dbms-column>
+      </field-map>
+      <field-map>
+         <cmp-field>finishDate</cmp-field>
+         <dbms-column>FINISH_DATE</dbms-column>
       </field-map>
       <field-map>
          <cmp-field>id</cmp-field>
-         <dbms-column>id</dbms-column>
+         <dbms-column>ID</dbms-column>
+      </field-map>
+      <field-map>
+         <cmp-field>owner</cmp-field>
+         <dbms-column>OWNER</dbms-column>
+      </field-map>
+      <field-map>
+         <cmp-field>startDate</cmp-field>
+         <dbms-column>START_DATE</dbms-column>
+      </field-map>
+      <field-map>
+         <cmp-field>status</cmp-field>
+         <dbms-column>STATUS</dbms-column>
+      </field-map>
+      <field-map>
+         <cmp-field>stepId</cmp-field>
+         <dbms-column>STEP_ID</dbms-column>
       </field-map>
       </table-map>
 
+      <weblogic-query>
+         <query-method>
+            <method-name>findByEntryId</method-name>
+            <method-params>
+               <method-param>long</method-param>
+            </method-params>
+         </query-method>
+
+         <weblogic-ql><![CDATA[SELECT DISTINCT OBJECT(o) from CurrentStep o where o.entryId = ?1]]></weblogic-ql>
+      </weblogic-query>
+
    </weblogic-rdbms-bean>
 
-   <create-default-dbms-tables>True</create-default-dbms-tables>
+     <!-- 
+       To add weblogic relationships for beans not managed by XDoclet, add
+       a file to your XDoclet merge directory called weblogic-cmp-rdbms-beans.xml that contains
+       the <weblogic-rdbms-bean></weblogic-rdbms-bean> markups for those beans.
+     --> 
+
+     <!-- 
+       To add weblogic relationships for beans not managed by XDoclet, add
+       a file to your XDoclet merge directory called weblogic-cmp-rdbms-relationships.xml that contains
+       the <weblogic-rdbms-relation></weblogic-rdbms-relation> markups for those beans.
+     --> 
+
+   <order-database-operations>True</order-database-operations>
+   <enable-batch-operations>True</enable-batch-operations>
+
+   <create-default-dbms-tables>CreateOnly</create-default-dbms-tables>
 
 </weblogic-rdbms-jar>

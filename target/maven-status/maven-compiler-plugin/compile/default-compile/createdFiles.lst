@@ -1,3 +1,6 @@
-com/example/plugins/tutorial/api/MyPluginComponent.class
+com/example/plugins/tutorial/jira/workflow/ParentIssueBlockingConditionFactory.class
+com/example/plugins/tutorial/jira/workflow/CreateOtherIssuePostFunction.class
+com/example/plugins/tutorial/jira/workflow/CloseIssueWorkflowValidatorFactory.class
+com/example/plugins/tutorial/jira/workflow/CloseIssueWorkflowValidator.class
 com/example/plugins/tutorial/jira/workflow/CloseParentIssuePostFunction.class
-com/example/plugins/tutorial/impl/MyPluginComponentImpl.class
+com/example/plugins/tutorial/jira/workflow/ParentIssueBlockingCondition.class

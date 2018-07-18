@@ -1,2 +1,2 @@
-ut/com/example/plugins/tutorial/MyComponentUnitTest.class
-it/com/example/plugins/tutorial/MyComponentWiredTest.class
+com/example/plugins/tutorial/jira/workflow/AbstractWorkflowTest.class
+com/example/plugins/tutorial/jira/workflow/ParentIssueBlockingConditionTest.class

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE jboss PUBLIC "-//JBoss//DTD JBOSS 3.0//EN" "http://www.jboss.org/j2ee/dtd/jboss_3_0.dtd">
+<!DOCTYPE jboss PUBLIC "-//JBoss//DTD JBOSS 4.0//EN" "http://www.jboss.org/j2ee/dtd/jboss_4_0.dtd">
 
 <jboss>
 
@@ -13,45 +13,86 @@
      -->
 
       <entity>
-         <ejb-name>PropertyDate</ejb-name>
-         <local-jndi-name>PropertyDate</local-jndi-name>
+         <ejb-name>HistoryStepPrev</ejb-name>
+         <local-jndi-name>HistoryStepPrev</local-jndi-name>
+
+        <method-attributes>
+        </method-attributes>
 
       </entity>
       <entity>
-         <ejb-name>PropertyEntry</ejb-name>
-         <local-jndi-name>PropertyEntry</local-jndi-name>
+         <ejb-name>HistoryStep</ejb-name>
+         <local-jndi-name>HistoryStep</local-jndi-name>
+
+        <method-attributes>
+        </method-attributes>
 
       </entity>
       <entity>
-         <ejb-name>PropertyString</ejb-name>
-         <local-jndi-name>PropertyString</local-jndi-name>
+         <ejb-name>CurrentStepPrev</ejb-name>
+         <local-jndi-name>CurrentStepPrev</local-jndi-name>
+
+        <method-attributes>
+        </method-attributes>
 
       </entity>
       <entity>
-         <ejb-name>PropertyNumber</ejb-name>
-         <local-jndi-name>PropertyNumber</local-jndi-name>
+         <ejb-name>WorkflowEntry</ejb-name>
+         <local-jndi-name>WorkflowEntry</local-jndi-name>
+
+        <method-attributes>
+        </method-attributes>
 
       </entity>
       <entity>
-         <ejb-name>PropertyDecimal</ejb-name>
-         <local-jndi-name>PropertyDecimal</local-jndi-name>
+         <ejb-name>CurrentStep</ejb-name>
+         <local-jndi-name>CurrentStep</local-jndi-name>
 
-      </entity>
-      <entity>
-         <ejb-name>PropertyData</ejb-name>
-         <local-jndi-name>PropertyData</local-jndi-name>
+        <method-attributes>
+        </method-attributes>
 
       </entity>
 
       <session>
-         <ejb-name>PropertyStore</ejb-name>
-         <jndi-name>PropertyStore</jndi-name>
+         <ejb-name>WorkflowStore</ejb-name>
+         <jndi-name>WorkflowStore</jndi-name>
 
+        <method-attributes>
+        </method-attributes>
       </session>
+      <session>
+         <ejb-name>Workflow</ejb-name>
+         <jndi-name>Workflow</jndi-name>
+
+        <method-attributes>
+        </method-attributes>
+      </session>
+
+    <!--
+      write a merge file jboss-webservices.ent for webservice-description 
+    -->
 
    </enterprise-beans>
 
+     <!--
+       To specify your own assembly descriptor info here, add a file to your
+       XDoclet merge directory called jboss-assembly-descriptor.xml that contains
+       the <assembly-descriptor></assembly-descriptor> markup.
+     -->
+   <assembly-descriptor>
+    <!-- message destinations -->
+     <!--
+       To specify additional message-destination elements, add a file in the merge
+       directory called jboss-message-destinations.ent that contains them.
+     -->
+   </assembly-descriptor>
+
    <resource-managers>
    </resource-managers>
+
+  <!--
+    | for container settings, you can merge in jboss-container.xml
+    | this can contain <invoker-proxy-bindings/> and <container-configurations/>
+  -->
 
 </jboss>

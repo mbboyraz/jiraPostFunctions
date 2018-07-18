@@ -1,0 +1,76 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.atlassian.bundles</groupId>
+    <artifactId>parent-pom</artifactId>
+    <version>1</version>
+  </parent>
+  <artifactId>google-collections</artifactId>
+  <version>1.0</version>
+  <name>Google Collections Bundle</name>
+  <description>Google Collections with OSGi manifest entries</description>
+  <packaging>bundle</packaging>
+  <licenses>
+    <license>
+      <name>Apache License Version 2.0</name>
+      <url>https://maven.atlassian.com/public/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <properties>
+    <Export-Package>com.google.common.*;version="${pom.version}"</Export-Package>
+  </properties>
+  <build>
+    <sourceDirectory>${basedir}/target/source</sourceDirectory>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>com.google.collections</groupId>
+                  <artifactId>google-collections</artifactId>
+                  <version>1.0</version>
+                  <classifier>sources</classifier>
+                  <outputDirectory>${basedir}/target/source</outputDirectory>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+  <dependencies>
+    <dependency>
+      <groupId>com.atlassian.bundles</groupId>
+      <artifactId>jsr305</artifactId>
+      <version>1.0</version>
+      <type>bundle</type>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+  <scm>
+    <connection>scm:svn:https://studio.atlassian.com/svn/BUNDLES/tags/google-collections-1.0</connection>
+    <developerConnection>scm:svn:https://studio.atlassian.com/svn/BUNDLES/tags/google-collections-1.0</developerConnection>
+    <url>https://svn.atlassian.com/svn/public/atlassian/pom/atlassian-public-pom/tags/google-collections-1.0</url>
+  </scm>
+</project>
+

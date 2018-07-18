@@ -1,2 +1,2 @@
-/root/Documents/JiraPlugin/workflowExtension/add-workflow-extensions/src/test/java/ut/com/example/plugins/tutorial/MyComponentUnitTest.java
-/root/Documents/JiraPlugin/workflowExtension/add-workflow-extensions/src/test/java/it/com/example/plugins/tutorial/MyComponentWiredTest.java
+/root/Documents/JiraPlugin/workfolw/tutorial-jira-add-workflow-extensions/src/test/java/com/example/plugins/tutorial/jira/workflow/AbstractWorkflowTest.java
+/root/Documents/JiraPlugin/workfolw/tutorial-jira-add-workflow-extensions/src/test/java/com/example/plugins/tutorial/jira/workflow/ParentIssueBlockingConditionTest.java

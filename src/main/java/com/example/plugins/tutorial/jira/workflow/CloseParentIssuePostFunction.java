@@ -4,21 +4,25 @@ import com.atlassian.jira.bc.issue.IssueService;
 import com.atlassian.jira.component.ComponentAccessor;
 import com.atlassian.jira.config.ConstantsManager;
 import com.atlassian.jira.config.SubTaskManager;
-import com.atlassian.jira.issue.*;
+import com.atlassian.jira.issue.Issue;
+import com.atlassian.jira.issue.IssueFieldConstants;
+import com.atlassian.jira.issue.IssueInputParameters;
+import com.atlassian.jira.issue.MutableIssue;
+import com.atlassian.jira.issue.IssueManager;
 import com.atlassian.jira.issue.status.Status;
 import com.atlassian.jira.security.JiraAuthenticationContext;
 import com.atlassian.jira.user.ApplicationUser;
 import com.atlassian.jira.workflow.JiraWorkflow;
 import com.atlassian.jira.workflow.WorkflowManager;
 import com.atlassian.jira.workflow.function.issue.AbstractJiraFunctionProvider;
-import com.atlassian.plugin.spring.scanner.annotation.component.Scanned;
-import com.atlassian.plugin.spring.scanner.annotation.imports.ComponentImport;
 import com.opensymphony.module.propertyset.PropertySet;
 import com.opensymphony.workflow.WorkflowException;
 import com.opensymphony.workflow.loader.ActionDescriptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.atlassian.plugin.spring.scanner.annotation.component.Scanned;
+import com.atlassian.plugin.spring.scanner.annotation.imports.JiraImport;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -29,35 +33,31 @@ import java.util.Map;
  * Any parameters that were saved in your factory class will be available in the transientVars Map.
  */
 @Scanned
-public class CloseParentIssuePostFunction extends AbstractJiraFunctionProvider
-{
+public class CloseParentIssuePostFunction extends AbstractJiraFunctionProvider {
     private static final Logger log = LoggerFactory.getLogger(CloseParentIssuePostFunction.class);
-    public static final String FIELD_MESSAGE = "messageField";
 
-
-    @ComponentImport
+    @JiraImport
     private final WorkflowManager workflowManager;
-    @ComponentImport
+    @JiraImport
     private final SubTaskManager subTaskManager;
-    @ComponentImport
+    @JiraImport
     private final JiraAuthenticationContext authenticationContext;
-    @ComponentImport
+    @JiraImport
     private IssueManager issueManager;
 
     private final Status closedStatus;
 
-
     public CloseParentIssuePostFunction(ConstantsManager constantsManager,
-                                        WorkflowManager workflowManager,
-                                        SubTaskManager subTaskManager,
-                                        JiraAuthenticationContext authenticationContext,
-                                        IssueManager issueManager) {
-        this.issueManager = issueManager;
+        WorkflowManager workflowManager,
+        SubTaskManager subTaskManager,
+        JiraAuthenticationContext authenticationContext,
+        IssueManager issueManager) {
         this.workflowManager = workflowManager;
         this.subTaskManager = subTaskManager;
         this.authenticationContext = authenticationContext;
+        this.issueManager = issueManager;
         closedStatus = constantsManager
-                .getStatus(Integer.toString(IssueFieldConstants.CLOSED_STATUS_ID));
+            .getStatus(Integer.toString(IssueFieldConstants.CLOSED_STATUS_ID));
     }
 
     public void execute(Map transientVars, Map args, PropertySet ps) throws WorkflowException {
@@ -68,7 +68,7 @@ public class CloseParentIssuePostFunction extends AbstractJiraFunctionProvider
 
         // Ensure that the parent issue is not already closed
         if (parentIssue == null || IssueFieldConstants.CLOSED_STATUS_ID == Integer
-                .parseInt(parentIssue.getStatusId())) {
+            .parseInt(parentIssue.getStatusId())) {
             return;
         }
 
@@ -78,7 +78,7 @@ public class CloseParentIssuePostFunction extends AbstractJiraFunctionProvider
         for (Iterator<Issue> iterator = subTasks.iterator(); iterator.hasNext(); ) {
             Issue associatedSubTask = iterator.next();
             if (!subTask.getKey().equals(associatedSubTask.getKey()) &&
-                    IssueFieldConstants.CLOSED_STATUS_ID != Integer.parseInt(associatedSubTask.getStatus().getId())) {
+                IssueFieldConstants.CLOSED_STATUS_ID != Integer.parseInt(associatedSubTask.getStatus().getId())) {
                 return;
             }
         }
@@ -88,10 +88,11 @@ public class CloseParentIssuePostFunction extends AbstractJiraFunctionProvider
             closeIssue(parentIssue);
         } catch (WorkflowException e) {
             log.error(
-                    "Error occurred while closing the issue: " + parentIssue.getKey() + ": " + e, e);
+                "Error occurred while closing the issue: " + parentIssue.getKey() + ": " + e, e);
             e.printStackTrace();
         }
     }
+
     private void closeIssue(Issue issue) throws WorkflowException {
         Status currentStatus = issue.getStatus();
         JiraWorkflow workflow = workflowManager.getWorkflow(issue);
@@ -110,9 +111,10 @@ public class CloseParentIssuePostFunction extends AbstractJiraFunctionProvider
             IssueInputParameters parameters = issueService.newIssueInputParameters();
             parameters.setRetainExistingValuesWhenParameterNotProvided(true);
             IssueService.TransitionValidationResult validationResult =
-                    issueService.validateTransition(currentUser, issue.getId(),
-                            closeAction.getId(), parameters);
+                issueService.validateTransition(currentUser, issue.getId(),
+                    closeAction.getId(), parameters);
             IssueService.IssueResult result = issueService.transition(currentUser, validationResult);
+            // check result for errors
         }
     }
 }
